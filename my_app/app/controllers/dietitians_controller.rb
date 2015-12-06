@@ -51,4 +51,4 @@ class DietitiansController < ApplicationController
 
 #     redirect_to "/sessions", :notice => "Session deleted."
 #   end
-# end
+end
