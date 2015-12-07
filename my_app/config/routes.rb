@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
 
   root 'dietitians#index'
+
+ devise_for :dietitians
+  get "/dietitians/alldietitians", :controller => "dietitians", :action => "all_dietitians"
+  get "/dietitians/:id", :controller => "dietitians", :action => "show_dietitian"
+  get "/dietitians/:id/edit_dietitian", :controller => "dietitians", :action => "edit_dietitian"
+
+  devise_for :clients
+
+
   # Routes for the Session resource:
   # CREATE
   get "/sessions/new", :controller => "sessions", :action => "new"
   post "/create_session", :controller => "sessions", :action => "create"
 
   # READ
-  get "/sessions", :controller => "sessions", :action => "index"
   get "/sessions/:id", :controller => "sessions", :action => "show"
 
   # UPDATE
@@ -18,40 +26,13 @@ Rails.application.routes.draw do
   get "/delete_session/:id", :controller => "sessions", :action => "destroy"
   #------------------------------
 
-  devise_for :dietitians
-  # Routes for the Dietitian resource:
-  # CREATE
-  get "/dietitians/new", :controller => "dietitians", :action => "new"
-  post "/create_dietitian", :controller => "dietitians", :action => "create"
-
-  # READ
-  get "/dietitians", :controller => "dietitians", :action => "index"
-  get "/dietitians/:id", :controller => "dietitians", :action => "show"
-
-  # UPDATE
-  get "/dietitians/:id/edit", :controller => "dietitians", :action => "edit"
-  post "/update_dietitian/:id", :controller => "dietitians", :action => "update"
-
-  # DELETE
-  get "/delete_dietitian/:id", :controller => "dietitians", :action => "destroy"
+  
   #------------------------------
 
-  devise_for :clients
+  
   # Routes for the Dietitian resource:
   # CREATE
-  get "/clients/new", :controller => "clients", :action => "new"
-  post "/create_client", :controller => "clients", :action => "create"
 
-  # READ
-  get "/clients", :controller => "clients", :action => "index"
-  get "/clients/:id", :controller => "clients", :action => "show"
-
-  # UPDATE
-  get "/clients/:id/edit", :controller => "clients", :action => "edit"
-  post "/update_client/:id", :controller => "clients", :action => "update"
-
-  # DELETE
-  get "/delete_client/:id", :controller => "clients", :action => "destroy"
   #------------------------------
 
   

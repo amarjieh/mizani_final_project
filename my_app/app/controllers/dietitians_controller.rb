@@ -1,15 +1,16 @@
 class DietitiansController < ApplicationController
-  def index
+  def all_dietitians
     @dietitians = Dietitian.all
   end
 
-  def show
+  def show_dietitian
     @dietitian = Dietitian.find(params[:id])
   end
 
-  def new
-    @dietitian = Dietitian.new
+  def edit_dietitian
+  	@dietitian = Dietitian.find(params[:id])
   end
+
 
 #   def create
 #     @dietitian = Session.new

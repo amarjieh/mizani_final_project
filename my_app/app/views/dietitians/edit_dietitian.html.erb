@@ -1,0 +1,84 @@
+<!-- Validation failure messages -->
+<% if @dietitian.errors.any? %>
+  <% @dietitian.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<br>
+<br>
+
+<div class="page-header">
+  <h3>Edit My Details </h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="dietitians/update_dietitian/<%= @dietitian.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for dietitian_id -->
+      <div class="form-group">
+        <label for="dietitian_name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="dietitian_id" name="dietitian_name" placeholder="Dietitian" class="form-control" value="<%= @dietitian.name %>">
+      </div>
+
+
+      <div class="form-group">
+        <label for="dietitian_country" class="control-label">
+          Country
+        </label>
+
+        <input type="text" id="dietitian_country" name="dietitian_country" placeholder="Dietitian" class="form-control" value="<%= @dietitian.country %>">
+      </div>
+
+
+      <div class="form-group">
+        <label for="dietitian_yoe" class="control-label">
+          Years Of Experience
+        </label>
+
+        <input type="number" id="dietitian_yoe" name="dietitian_yoe" placeholder="Dietitian" class="form-control" value="<%= @dietitian.years_of_experience %>">
+      </div>
+
+
+      <div class="form-group">
+        <label for="dietitian_yoe" class="control-label">
+          Areas Of Expertise
+        </label>
+        <br>
+        <form action="expertise_form.asp">
+          <input type="checkbox" name="op1" value="op1"> Weight Loss and Weight Management<br>
+          <input type="checkbox" name="op2" value="op2"> Weight Loss Pre and Post Bariatric Surgery<br>
+          <input type="checkbox" name="op3" value="op3"> Pre-Conception and Pregnancy<br>
+          <input type="checkbox" name="op4" value="op4"> Family, Child and Adolescent Nutrition<br>
+          <input type="checkbox" name="op5" value="op5"> Eating Disorders<br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+
+
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Image url
+        </label>
+
+        <input type="text" id="image_url" name="image_url" placeholder="Dietitian" class="form-control" value="<%= @dietitian.image %>">
+      </div>
+
+
+      <button class="btn btn-warning">
+        Update Info
+      </button>
+      or
+      <a href="/dietitians/<%= @dietitian.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="page-header">
+  <br>
+  <br>
+  <h1>
+    Meet Mizani's Dietitians
+<!--     <a href="/sessions/new" class="btn btn-lg btn-success">New Session</a> -->
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Dietitian</th>
+        <th>Email</th>
+        <th>Country</th>
+        <th>Areas of expertise</th>
+        <th>Client</th>
+        <th>Years of experience</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+
+      <% @dietitians.each do |dietitian| %>
+      <tr>
+        <td><%= dietitian.name %></td>
+        <td><%= dietitian.email %></td>
+        <td><%= dietitian.country %></td>
+        <td><%= dietitian.areas_of_expertise %></td>
+        <td><%= dietitian.years_of_experience %></td>
+        <td><%= dietitian.years_of_experience %></td>
+        <td>
+          <img src="<%= dietitian.image %>" width="48">
+        </td>
+        <td>
+          <a href="/dietitians/<%= dietitian.id %>" class="btn btn-primary">Show</a>
+          <% if current_dietitian == dietitian %>
+            <a href="/dietitians/<%= dietitian.id %>/edit_dietitian" class="btn btn-warning">Edit</a>
+            <a href="/delete_dietitian/<%= dietitian.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
