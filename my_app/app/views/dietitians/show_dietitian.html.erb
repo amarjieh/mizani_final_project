@@ -9,8 +9,6 @@
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-      
-
 
       <dt>Image</dt>
       <dd>
@@ -24,26 +22,34 @@
       <dd><%= @dietitian.country %></dd>
 
       <dt>Years of Experience</dt>
-      <dd><%= @dietitian.years_of_expertise %></dd>
+      <dd><%= @dietitian.years_of_experience %></dd>
 
       <dt>Areas of Expertise</dt>
       <dd><%= @dietitian.areas_of_expertise %></dd>
 
       <dt>Rate</dt>
-      <dd><%= @dietitian.rate %></dd>
+      <dd>
+      	  <%= @dietitian.rate %>
+	      <% if @dietitian.rate != nil %>
+		      <% @i = 0 %>
+		      <% while @i < (@dietitian.rate%10)  do %>
+		   			<img src="/assets/images/star.jpg">
+		   			<% @i +=1 %>
+			  <% end %>
+		  <% end %>
+	  </dd>
 
-    </dl>
+	 </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/sessions" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/sessions/<%= @session.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_session/<%= @session.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
+
+      <% if current_client.present? %>
+        <h3> Rate this dietitian </h3>
+        <a href="/diet/rate/<%= @dietitian.id %>/1"><img src="graystar.PNG"></a>
+        <a href="/diet/rate/<%= @dietitian.id %>/2"><img src="graystar.PNG"></a>
+        <a href="/diet/rate/<%= @dietitian.id %>/3"><img src="graystar.PNG"></a>
+        <a href="/diet/rate/<%= @dietitian.id %>/4"><img src="graystar.PNG"></a>
+        <a href="/diet/rate/<%= @dietitian.id %>/5"><img src="graystar.PNG"></a>
+      <% end %>
+
   </div>
 </div>

@@ -33,10 +33,9 @@
           <img src="<%= dietitian.image %>" width="48">
         </td>
         <td>
-          <a href="/dietitians/<%= dietitian.id %>" class="btn btn-primary">Show</a>
+          <a href="/diet/<%= dietitian.id %>" class="btn btn-primary">Show</a>
           <% if current_dietitian == dietitian %>
-            <a href="/dietitians/<%= dietitian.id %>/edit_dietitian" class="btn btn-warning">Edit</a>
-            <a href="/delete_dietitian/<%= dietitian.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            <a href="/diet/edit_dietitian/<%= dietitian.id %>" class="btn btn-warning">Edit</a>
           <% end %>
         </td>
       </tr>

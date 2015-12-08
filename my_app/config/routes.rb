@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'dietitians#index'
+  root 'dietitians#all_dietitians'
 
- devise_for :dietitians
-  get "/dietitians/alldietitians", :controller => "dietitians", :action => "all_dietitians"
-  get "/dietitians/:id", :controller => "dietitians", :action => "show_dietitian"
-  get "/dietitians/:id/edit_dietitian", :controller => "dietitians", :action => "edit_dietitian"
+  devise_for :dietitians
+  get "/diet/all_dietitians", :controller => "dietitians", :action => "all_dietitians"
+  get "/diet/update_dietitian/:id", :controller => "dietitians", :action => "update_dietitian"
+  get "/diet/edit_dietitian/:id", :controller => "dietitians", :action => "edit_dietitian"
+  get "/diet/:id", :controller => "dietitians", :action => "show_dietitian"
+  get "/diet/rate/:id/:rate", :controller => "dietitians", :action => "rate_dietitian"
+
 
   devise_for :clients
 

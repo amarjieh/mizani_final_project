@@ -17,7 +17,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="dietitians/update_dietitian/<%= @dietitian.id %>" method="post">
+    <form action="/diet/update_dietitian/<%= @dietitian.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -41,28 +41,30 @@
 
 
       <div class="form-group">
-        <label for="dietitian_yoe" class="control-label">
+        <label for="years_of_experience" class="control-label">
           Years Of Experience
         </label>
 
-        <input type="number" id="dietitian_yoe" name="dietitian_yoe" placeholder="Dietitian" class="form-control" value="<%= @dietitian.years_of_experience %>">
+        <input type="number" id="years_of_experience" name="years_of_experience" placeholder="Dietitian" class="form-control" value="<%= @dietitian.years_of_experience %>">
       </div>
 
 
       <div class="form-group">
-        <label for="dietitian_yoe" class="control-label">
+        <label for="areas_of_expertise" class="control-label">
           Areas Of Expertise
         </label>
-        <br>
-        <form action="expertise_form.asp">
+        
+        <input type="text" id="areas_of_expertise" name="areas_of_expertise" placeholder="Dietitian" class="form-control" value="<%= @dietitian.areas_of_expertise %>">
+      </div>
+        
+<!--         <form action="expertise_form.asp">
           <input type="checkbox" name="op1" value="op1"> Weight Loss and Weight Management<br>
           <input type="checkbox" name="op2" value="op2"> Weight Loss Pre and Post Bariatric Surgery<br>
           <input type="checkbox" name="op3" value="op3"> Pre-Conception and Pregnancy<br>
           <input type="checkbox" name="op4" value="op4"> Family, Child and Adolescent Nutrition<br>
           <input type="checkbox" name="op5" value="op5"> Eating Disorders<br>
           <input type="submit" value="Submit">
-        </form>
-      </div>
+        </form> -->
 
 
       <div class="form-group">
@@ -78,7 +80,7 @@
         Update Info
       </button>
       or
-      <a href="/dietitians/<%= @dietitian.id %>">Cancel</a>
+      <a href="/diet/<%= @dietitian.id %>">Cancel</a>
     </form>
   </div>
 </div>
