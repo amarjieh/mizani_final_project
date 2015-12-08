@@ -13,6 +13,7 @@
       <dt>Image</dt>
       <dd>
         <img src="<%= @dietitian.image %>">
+
       </dd>
       
       <dt>Name</dt>
@@ -29,11 +30,10 @@
 
       <dt>Rate</dt>
       <dd>
-      	  <%= @dietitian.rate %>
 	      <% if @dietitian.rate != nil %>
 		      <% @i = 0 %>
 		      <% while @i < (@dietitian.rate%10)  do %>
-		   			<img src="/assets/images/star.jpg">
+            <img src="http://localhost:3000/assets/star.jpg" height="25" width="25">
 		   			<% @i +=1 %>
 			  <% end %>
 		  <% end %>
@@ -41,15 +41,42 @@
 
 	 </dl>
 
+<br>
 
-      <% if current_client.present? %>
-        <h3> Rate this dietitian </h3>
-        <a href="/diet/rate/<%= @dietitian.id %>/1"><img src="graystar.PNG"></a>
-        <a href="/diet/rate/<%= @dietitian.id %>/2"><img src="graystar.PNG"></a>
-        <a href="/diet/rate/<%= @dietitian.id %>/3"><img src="graystar.PNG"></a>
-        <a href="/diet/rate/<%= @dietitian.id %>/4"><img src="graystar.PNG"></a>
-        <a href="/diet/rate/<%= @dietitian.id %>/5"><img src="graystar.PNG"></a>
-      <% end %>
+<% if current_client.present? %>
+<div class="well">
+            <h4> Rate this dietitian   
+            <a href="/diet/rate/<%= @dietitian.id %>/1"><img src="http://localhost:3000/assets/graystar.PNG" height="25" width="25"></a>
+            <a href="/diet/rate/<%= @dietitian.id %>/2"><img src="http://localhost:3000/assets/graystar.PNG" height="25" width="25"></a>
+            <a href="/diet/rate/<%= @dietitian.id %>/3"><img src="http://localhost:3000/assets/graystar.PNG" height="25" width="25"></a>
+            <a href="/diet/rate/<%= @dietitian.id %>/4"><img src="http://localhost:3000/assets/graystar.PNG" height="25" width="25"></a>
+            <a href="/diet/rate/<%= @dietitian.id %>/5"><img src="http://localhost:3000/assets/graystar.PNG" height="25" width="25"></a>
+            </h4>
+</div>
+<div class="well">
+      <h4> If this dietitian is right for you? book your diet session with <%= @dietitian.email %> <a href="/diet/to_book/<%= @dietitian.id %>/<%= current_client.id %>" class="btn btn-success btn-sm"  rel="nofollow">
+        Book 
+      </a>
+      </h4>
+</div>
+<% end %>
+
+<% if current_dietitian.present? %>
+<div class="well">
+      <h4> Edit My Details <a href="/diet/edit_dietitian/<%= @dietitian.id %>" class="btn btn-success btn-sm"  rel="nofollow">
+        Edit 
+      </a>
+      </h4>   
+</div>
+<div class="well">
+      <h4> Manage My Sessions <a href="/sessions" class="btn btn-success btn-sm"  rel="nofollow">
+        Manage 
+      </a>
+      </h4>
+</div>
+<% end %>
+
+
 
   </div>
 </div>

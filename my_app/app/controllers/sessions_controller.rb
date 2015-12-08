@@ -4,8 +4,17 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
   end
 
-  def new
+  def new_session
     @session = Session.new
+    @session.dietitian_id = current_dietitian.id
+    @session.time = params[:session_time]
+    @session.status = "opened"
+
+    if @session.save
+      redirect_to "/my_sessions", :notice => "Session created successfully."
+    else
+      render 'my_sessions'
+    end 
   end
 
   def create
@@ -48,4 +57,13 @@ class SessionsController < ApplicationController
 
     redirect_to "/sessions", :notice => "Session deleted."
   end
+
+  def my_sessions
+    if current_client.present?
+      @sessions = current_client.sessions
+    elsif current_dietitian.present?
+      @sessions = current_dietitian.sessions
+    end
+  end
+
 end
