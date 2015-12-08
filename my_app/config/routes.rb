@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :dietitians
   get "/diet/all_dietitians", :controller => "dietitians", :action => "all_dietitians"
-  get "/diet/update_dietitian/:id", :controller => "dietitians", :action => "update_dietitian"
+  post "/diet/update_dietitian/:id", :controller => "dietitians", :action => "update_dietitian"
   get "/diet/edit_dietitian/:id", :controller => "dietitians", :action => "edit_dietitian"
   get "/diet/:id", :controller => "dietitians", :action => "show_dietitian"
   get "/diet/rate/:id/:rate", :controller => "dietitians", :action => "rate_dietitian"
@@ -17,15 +17,17 @@ Rails.application.routes.draw do
 
   # Routes for the Session resource:
   # CREATE
-  post "/sessions/new", :controller => "sessions", :action => "new_session"
-  post "/create_session", :controller => "sessions", :action => "create"
+   post "/sessions/new", :controller => "sessions", :action => "new_session"
 
-  # READ
-  get "/sessions/:id", :controller => "sessions", :action => "show"
+   get "/session/book/:client/:session", :controller => "sessions", :action => "book"
+  # post "/create_session", :controller => "sessions", :action => "create"
 
-  # UPDATE
-  get "/sessions/:id/edit", :controller => "sessions", :action => "edit"
-  post "/update_session/:id", :controller => "sessions", :action => "update"
+  # # READ
+  # get "/sessions/:id", :controller => "sessions", :action => "show"
+
+  # # UPDATE
+  # get "/sessions/:id/edit", :controller => "sessions", :action => "edit"
+  # post "/update_session/:id", :controller => "sessions", :action => "update"
 
   # DELETE
   get "/delete_session/:id", :controller => "sessions", :action => "destroy"

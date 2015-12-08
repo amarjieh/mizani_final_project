@@ -6,6 +6,8 @@
   </h1>
 </div>
 
+<% if current_dietitian.present? %>
+
 <div class="row">
   <div class="col-md-12">
      <table class="table table-striped table-hover">
@@ -16,7 +18,7 @@
       </tr>
 
       <% @sessions.each do |session| %>
-        <% if session.time > Time.now %>
+        <% if session.time > DateTime.now %>
           <tr>
             <td><%= session.time %></td>
             <td>
@@ -24,7 +26,7 @@
                 Available
               <% end %>
               <% if session.status == "booked"%>
-                Booked with <%= session.cleint_id.email %>
+                Booked with <%= session.client.email %>
               <% end %>
             </td>
             <td>
@@ -43,6 +45,8 @@
       <div class="panel-body">
 
       <form action="/sessions/new" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
           <!-- Label and input for caption -->
           <div class="form-group">
             <label for="caption" class="control-label">
@@ -62,3 +66,28 @@
 
   </div>
 </div>
+
+<% end %>
+
+<% if current_client.present? %>
+<div class="row">
+  <div class="col-md-12">
+     <table class="table table-striped table-hover">
+      <tr>
+        <th>When</th>
+        <th>Who is my dietitian?</th>
+      </tr>
+
+      <% @sessions.each do |session| %>
+        <% if session.time > DateTime.now %>
+          <tr>
+            <td><%= session.time %></td>
+            <td><%= session.dietitian.email %></td>
+          </tr>
+        <% end %>
+      <% end %>
+
+    </table>
+    </div>
+  </div>
+<% end %>

@@ -20,7 +20,7 @@
           <tr>
             <td><%= session.time %></td>
             <td>
-              <a href="/session/book/<%= dietitian.id %>/current_client.id" class="btn btn-primary">Book This Session</a>
+              <a href="/session/book/<%= current_client.id %>/<%= session.id %>" class="btn btn-primary">Book This Session</a>
             </td>
           </tr>
         <% end %>
