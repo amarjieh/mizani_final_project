@@ -2,12 +2,12 @@
 <br>
 <br>
 <div class="page-header">
-<div class="container">
-  <div class="jumbotron">
-    <h1>My Sessions</h1> 
-    <p>Check out your future diet sessions</p> 
+  <div class="container">
+    <div class="jumbotron">
+      <h1>My Sessions</h1> 
+      <p>Check out your future diet sessions</p> 
+    </div>
   </div>
-</div>
 </div>
 
 
@@ -15,61 +15,61 @@
 
 <div class="row">
   <div class="col-md-12">
-     <table class="table table-striped table-hover">
-      <tr>
-        <th>When</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
+   <table class="table table-striped table-hover">
+    <tr>
+      <th>When</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
 
-      <% @sessions.each do |session| %>
-        <% if session.time > DateTime.now %>
-          <tr>
-            <td><%= session.time %></td>
-            <td>
-              <% if session.status == "opened"%>
-                Available
-              <% end %>
-              <% if session.status == "booked"%>
-                Booked with <%= session.client.email %>
-              <% end %>
-            </td>
-            <td>
-              <% if session.status == "opened"%>
-                <a href="/delete_session/<%= session.id %>" class="btn btn-danger">Delete Session</a>
-              <% end %>
-            </td>
-          </tr>
+    <% @sessions.each do |session| %>
+    <% if session.time > DateTime.now %>
+    <tr>
+      <td><%= session.time %></td>
+      <td>
+        <% if session.status == "opened"%>
+        Available
         <% end %>
-      <% end %>
+        <% if session.status == "booked"%>
+        Booked with <%= session.client.email %>
+        <% end %>
+      </td>
+      <td>
+        <% if session.status == "opened"%>
+        <a href="/delete_session/<%= session.id %>" class="btn btn-danger">Delete Session</a>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <% end %>
 
-    </table>
+  </table>
 
 
-<div class="well">
-      <div class="panel-body">
+  <div class="well">
+    <div class="panel-body">
 
       <form action="/sessions/new" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-          <!-- Label and input for caption -->
-          <div class="form-group">
-            <label for="caption" class="control-label">
-              Date and Time
-            </label>
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+        <!-- Label and input for caption -->
+        <div class="form-group">
+          <label for="caption" class="control-label">
+            Date and Time
+          </label>
 
-            <input type="datetime-local" name="session_time" min="<%= DateTime.now %>" id="session_time">
-          </div>
+          <input type="datetime-local" name="session_time" min="<%= DateTime.now %>" id="session_time">
+        </div>
 
-          <button class="btn btn-success">
-            Add Session
-          </button>
+        <button class="btn btn-info">
+          Add Session
+        </button>
       </form>
 
-      </div>
     </div>
-
   </div>
+
+</div>
 </div>
 
 <% end %>
@@ -77,22 +77,57 @@
 <% if current_client.present? %>
 <div class="row">
   <div class="col-md-12">
-     <table class="table table-striped table-hover">
-      <tr>
-        <th>When</th>
-        <th>Who is my dietitian?</th>
-      </tr>
+   <table class="table table-striped table-hover">
+    <tr>
+      <th>When</th>
+      <th>Who is my dietitian?</th>
+    </tr>
 
-      <% @sessions.each do |session| %>
-        <% if session.time > DateTime.now %>
-          <tr>
-            <td><%= session.time %></td>
-            <td><%= session.dietitian.email %></td>
-          </tr>
-        <% end %>
-      <% end %>
+    <% @sessions.each do |session| %>
+    <% if session.time > DateTime.now %>
+    <tr>
+      <td><%= session.time %></td>
+      <td><%= session.dietitian.name %></td>
+    </tr>
+    <% end %>
+    <% end %>
 
-    </table>
+  </table>
+
+
+
+  <div class="well">
+    <div class="panel-body">
+      Do you want to book a session? just pick one!
+      <form action="/session/clientbook/<%= current_client.id %>" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+        <!-- Label and input for caption -->
+        <div class="form-group">
+          <label for="Sessions" class="control-label">
+            Session
+          </label>
+
+          <select name="session_id">
+          <% @allsessions.each do |session| %>
+            <% if session.status == "opened"%>
+              <option value="<%= session.id %>">
+                At <%= session.time %> with <%= session.dietitian.name %>
+              </option>
+            <% end %>
+          <% end %>
+          </select>
+        </div>
+
+        <button class="btn btn-info">
+          Book Session
+        </button>
+      </form>
     </div>
   </div>
+
+
+</div>
+</div>
+
 <% end %>

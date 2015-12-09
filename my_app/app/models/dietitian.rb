@@ -5,4 +5,5 @@ class Dietitian < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :sessions
+  validates :name, :presence => true, :uniqueness => true
 end

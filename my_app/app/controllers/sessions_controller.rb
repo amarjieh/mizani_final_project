@@ -19,25 +19,8 @@ class SessionsController < ApplicationController
 
   def homepage
   end
-  # def create
-  #   @session = Session.new
-  #   @session.dietitian_id = params[:dietitian_id]
-  #   @session.time = params[:time]
-  #   @session.status = params[:status]
-  #   @session.client_id = params[:client_id]
 
-  #   if @session.save
-  #     redirect_to "/sessions", :notice => "Session created successfully."
-  #   else
-  #     render 'new'
-  #   end
-  # end
-
-  # def edit
-  #   @session = Session.find(params[:id])
-  # end
-
-    def book
+  def book
       @session = Session.find(params[:session])
       @session.status = "booked"
       @session.client_id = params[:client]
@@ -46,22 +29,21 @@ class SessionsController < ApplicationController
         redirect_to "/my_sessions", :notice => "Session updated successfully."
       else
         render 'my_sessions'
-      end
     end
+  end
 
-  # def update
-  #   @session = Session.find(params[:id])
+  def clientbook
+      @session = Session.find(params[:session_id])
+      @session.status = "booked"
+      @session.client_id = params[:client]
 
-  #   @session.dietitian_id = params[:dietitian_id]
-  #   @session.time = params[:time]
-  #   @session.status = params[:status]
-  #   @session.client_id = params[:client_id]
-
-  #   if @session.save
-  #     redirect_to "/sessions", :notice => "Session updated successfully."
-  #   else
-  #     render 'edit'
-  #   end
+      if @session.save
+        redirect_to "/my_sessions", :notice => "Session updated successfully."
+      else
+        render 'my_sessions'
+      end
+  end
+    
   # end
 
   def destroy
@@ -73,6 +55,7 @@ class SessionsController < ApplicationController
   end
 
   def my_sessions
+    @allsessions = Session.all
     if current_client.present?
       @sessions = current_client.sessions
     elsif current_dietitian.present?

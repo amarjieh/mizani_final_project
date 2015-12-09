@@ -8,7 +8,7 @@
 </div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12">
 
 <div class="row">
@@ -30,32 +30,26 @@
   </div>
   <% end %>
 </div>
-
+ -->
 
 
     <table class="table table-striped table-hover">
       <tr>
+        <th>Image</th>
         <th>Dietitian</th>
         <th>Email</th>
-        <th>Country</th>
         <th>Areas of expertise</th>
-        <th>Client</th>
-        <th>Years of experience</th>
-        <th>Image</th>
         <th>Action</th>
       </tr>
 
       <% @dietitians.each do |dietitian| %>
       <tr>
-        <td><%= dietitian.name %></td>
-        <td><%= dietitian.email %></td>
-        <td><%= dietitian.country %></td>
-        <td><%= dietitian.areas_of_expertise %></td>
-        <td><%= dietitian.years_of_experience %></td>
-        <td><%= dietitian.years_of_experience %></td>
         <td>
           <img src="<%= dietitian.image %>" width="48">
         </td>
+        <td><%= dietitian.name %></td>
+        <td><%= dietitian.email %></td>
+        <td><%= dietitian.areas_of_expertise %></td>
         <td>
           <a href="/diet/<%= dietitian.id %>" class="btn btn-primary">Show</a>
           <% if current_dietitian == dietitian %>
@@ -65,8 +59,6 @@
       </tr>
       <% end %>
     </table>
-
-
 
   </div>
 </div>

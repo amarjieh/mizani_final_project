@@ -5,4 +5,5 @@ class Client < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :sessions
+  validates :username, :presence => true, :uniqueness => true
 end

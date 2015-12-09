@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
 
   devise_for :clients
-
+  get "/client/edit_client/:id", :controller => "clients", :action => "edit_client"
+  post "/client/update_client/:id", :controller => "clients", :action => "update_client"
+  get "/client/:id", :controller => "clients", :action => "show_client"
 
   # Routes for the Session resource:
   # CREATE
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
    post "/sessions/new", :controller => "sessions", :action => "new_session"
 
    get "/session/book/:client/:session", :controller => "sessions", :action => "book"
+   post "/session/clientbook/:client", :controller => "sessions", :action => "clientbook"
   # post "/create_session", :controller => "sessions", :action => "create"
 
   # # READ
