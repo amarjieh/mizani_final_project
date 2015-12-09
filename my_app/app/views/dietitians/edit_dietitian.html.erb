@@ -8,11 +8,14 @@
   <% end %>
 <% end %>
 
-<br>
-<br>
 
 <div class="page-header">
-  <h3>Edit My Details </h3>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Edit My Details</h1> 
+    <p>Update your details in order to attract more clients</p> 
+  </div>
+</div>
 </div>
 
 <div class="row">
@@ -27,7 +30,7 @@
           Name
         </label>
 
-        <input type="text" id="dietitian_id" name="dietitian_name" placeholder="Dietitian" class="form-control" value="<%= @dietitian.name %>">
+        <input type="text" id="dietitian_name" name="dietitian_name" placeholder="Dietitian" class="form-control" value="<%= @dietitian.name %>">
       </div>
 
 
@@ -82,5 +85,6 @@
       or
       <a href="/diet/<%= @dietitian.id %>">Cancel</a>
     </form>
+    <br>
   </div>
 </div>

@@ -1,25 +1,24 @@
 <div class="page-header">
-  <br>
-  <br>
-  <h1>
-    Meet Mizani's Dietitians
-<!--     <a href="/sessions/new" class="btn btn-lg btn-success">New Session</a> -->
-  </h1>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Meet Our Dietitians</h1> 
+    <p>We have the best registered dietitians from all around the word and with many different expertise</p> 
+  </div>
+</div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
 
-
-
 <div class="row">
 <% @dietitians.each do |dietitian| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="http://localhost:3000/assets/d2.PNG" height="200" width="242">
+      <img src=<%= dietitian.image %> height="100" width="121">
       <div class="caption">
-        <h3><%= dietitian.email %></h3>
-        <p> this us usdj hkskjhs kjh kjshd kljah dkjah dlkjah sdklajh dklajhsd klajdh lk</p>
+        <h3><%= dietitian.name %></h3>
+        <p><%= dietitian.areas_of_expertise %></p>
         <p>
         <a href="/diet/<%= dietitian.id %>" class="btn btn-primary">Show</a>
           <% if current_dietitian == dietitian %>

@@ -1,10 +1,15 @@
+
+<br>
+<br>
 <div class="page-header">
-  <br>
-  <br>
-  <h1>
-    My Sessions
-  </h1>
+<div class="container">
+  <div class="jumbotron">
+    <h1>My Sessions</h1> 
+    <p>Check out your future diet sessions</p> 
+  </div>
 </div>
+</div>
+
 
 <% if current_dietitian.present? %>
 
@@ -56,7 +61,7 @@
             <input type="datetime-local" name="session_time" min="<%= DateTime.now %>" id="session_time">
           </div>
 
-          <button class="btn btn-warning">
+          <button class="btn btn-success">
             Add Session
           </button>
       </form>

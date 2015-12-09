@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'dietitians#all_dietitians'
+  root 'sessions#homepage'
 
   devise_for :dietitians
   get "/diet/all_dietitians", :controller => "dietitians", :action => "all_dietitians"
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   # Routes for the Session resource:
   # CREATE
+
+   get "/sessions/homepage", :controller => "sessions", :action => "homepage"
    post "/sessions/new", :controller => "sessions", :action => "new_session"
 
    get "/session/book/:client/:session", :controller => "sessions", :action => "book"

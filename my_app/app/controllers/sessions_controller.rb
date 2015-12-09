@@ -17,6 +17,8 @@ class SessionsController < ApplicationController
     end 
   end
 
+  def homepage
+  end
   # def create
   #   @session = Session.new
   #   @session.dietitian_id = params[:dietitian_id]

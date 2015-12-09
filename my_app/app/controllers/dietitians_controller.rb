@@ -14,8 +14,8 @@ class DietitiansController < ApplicationController
   def update_dietitian
     @dietitian = Dietitian.find(params[:id])
 
-    @dietitian.name = params[:name]
-    @dietitian.country = params[:country]
+    @dietitian.name = params[:dietitian_name]
+    @dietitian.country = params[:dietitian_country]
     @dietitian.years_of_experience = params[:years_of_experience]
     @dietitian.areas_of_expertise = params[:areas_of_expertise]
     @dietitian.image = params[:image_url]
