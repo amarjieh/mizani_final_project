@@ -31,12 +31,15 @@
         Available
         <% end %>
         <% if session.status == "booked"%>
-        Booked with <%= session.client.email %>
+        Booked with <%= session.client.username %>
         <% end %>
       </td>
       <td>
         <% if session.status == "opened"%>
-        <a href="/delete_session/<%= session.id %>" class="btn btn-danger">Delete Session</a>
+          <a href="/delete_session/<%= session.id %>" class="btn btn-danger">Delete Session</a>
+        <% end %>
+        <% if session.status == "booked"%>
+          <a href="/client/<%= session.client_id %>" class="btn btn-info">View Client</a>
         <% end %>
       </td>
     </tr>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   devise_for :clients
   get "/client/edit_client/:id", :controller => "clients", :action => "edit_client"
   post "/client/update_client/:id", :controller => "clients", :action => "update_client"
+  get "/client/me", :controller => "clients", :action => "me"
   get "/client/:id", :controller => "clients", :action => "show_client"
 
   # Routes for the Session resource:

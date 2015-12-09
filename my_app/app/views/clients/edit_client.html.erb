@@ -1,0 +1,63 @@
+<!-- Validation failure messages -->
+<% if @client.errors.any? %>
+  <% @client.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<div class="page-header">
+<div class="container">
+  <div class="jumbotron">
+    <h1>Edit My Details</h1> 
+    <p>Update your details to optimize your session</p> 
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/client/update_client/<%= @client.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for dietitian_id -->
+      <div class="form-group">
+        <label for="client_username" class="control-label">
+          Username
+        </label>
+
+        <input type="text" id="client_username" name="client_username" placeholder="Client" class="form-control" value="<%= @client.username %>">
+      </div>
+
+
+      <div class="form-group">
+        <label for="client_country" class="control-label">
+          Country
+        </label>
+
+        <input type="text" id="client_country" name="client_country" placeholder="Client" class="form-control" value="<%= @client.country %>">
+      </div>
+
+
+      <div class="form-group">
+        <label for="client_image" class="control-label">
+          Image url
+        </label>
+
+        <input type="text" id="client_image" name="client_image" placeholder="Client" class="form-control" value="<%= @client.image %>">
+      </div>
+
+
+      <button class="btn btn-warning">
+        Update Info
+      </button>
+      or
+      <a href="/client/<%= @client.id %>"><button class="btn btn-danger">Cancel</button></a>
+    </form>
+    <br>
+  </div>
+</div>
