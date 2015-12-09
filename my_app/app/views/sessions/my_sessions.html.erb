@@ -90,7 +90,7 @@
     <% if session.time > DateTime.now %>
     <tr>
       <td><%= session.time %></td>
-      <td><%= session.dietitian.name %></td>
+      <td><a href="/diet/<%= session.dietitian.id %>"><%= session.dietitian.name %></a></td>
     </tr>
     <% end %>
     <% end %>

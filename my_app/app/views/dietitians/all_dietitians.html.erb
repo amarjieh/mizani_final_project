@@ -45,7 +45,11 @@
       <% @dietitians.each do |dietitian| %>
       <tr>
         <td>
-          <img src="<%= dietitian.image %>" width="48">
+          <% if dietitian.image != nil %>
+            <img src="<%= dietitian.image %>" width="100">
+          <% else %>
+            <img src="http://localhost:3000/assets/client.jpg" width="100">
+          <% end %>
         </td>
         <td><%= dietitian.name %></td>
         <td><%= dietitian.email %></td>

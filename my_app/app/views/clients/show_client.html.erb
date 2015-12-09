@@ -1,29 +1,32 @@
 <div class="page-header">
 <div class="container">
   <div class="jumbotron">
-    <h1><%= @client.username %></h1> 
+    <% if @client.username == nil %>
+     <h1> UN-KNONW</h1>
+    <% else %>
+     <h1><%= @client.username %></h1> 
+    <% end %>
   </div>
 </div>
 </div>
 
 
 <div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
+  <div class="col-sm-offset-3 col-sm-6">
 
-      <dt>Image</dt>
-      <dd>
-        <img src="<%= @client.image %>">
 
-      </dd>
-      
-      <dt>Email</dt>
-      <dd><%= @client.email %></dd>
+    <div class="thumbnail">
+      <% if @client.image == nil %>
+          <img src="http://localhost:3000/assets/client.jpg">
+        <% else %>
+          <img src="<%= @client.image %>">
+        <% end %>
 
-      <dt>Country</dt>
-      <dd><%= @client.country %></dd>
-
-   </dl>
-
-</div>
+      <div class="caption">
+        <h3><%= @client.country %></h3>
+        <p>Email: <b><%= @client.email %></b></p>
+        
+      </div>
+      </div>
+    </div>
 </div>
