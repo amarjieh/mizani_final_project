@@ -23,7 +23,7 @@ class DietitiansController < ApplicationController
     if @dietitian.save
       redirect_to "/diet/all_dietitians", :notice => "Dietitian updated successfully."
     else
-      render 'edit_diet'
+      render 'edit_dietitian'
     end
   end
 
@@ -44,7 +44,7 @@ class DietitiansController < ApplicationController
   	@dietitian.rate = @new_num_voters * 10 + @new_real_rate
     
     if @dietitian.save
-      redirect_to "/diet/all_dietitians", :notice => "Dietitian was rated successfully."
+      redirect_to "/diet/#{@dietitian.id}", :notice => "Dietitian was rated successfully."
     else
       render 'show_dietitian'
     end
