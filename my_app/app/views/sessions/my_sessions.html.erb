@@ -113,7 +113,7 @@
 
           <select name="session_id">
           <% @allsessions.each do |session| %>
-            <% if session.status == "opened"%>
+            <% if session.status == "opened" &&  session.time > DateTime.now %>
               <option value="<%= session.id %>">
                 At <%= session.time %> with <%= session.dietitian.name %>
               </option>
